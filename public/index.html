@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <input id="videoId" placeholder="YouTube ID">
+  <button onclick="playVideo()">再生</button>
+  <br>
+  <video id="player" controls width="640"></video>
+
+  <script>
+    async function playVideo() {
+      const id = document.getElementById("videoId").value;
+      const res = await fetch(`http://localhost:3000/video?url=https://www.youtube.com/watch?v=${id}`);
+      const data = await res.json();
+      const player = document.getElementById("player");
+      player.src = data.videoUrl;
+      player.play();
+    }
+  </script>
+</body>
+</html>
