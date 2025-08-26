@@ -22,4 +22,7 @@ app.get("/video", async (req, res) => {
   }
 });
 
-app.listen(80, () => console.log("Server running on port 80"));
+const PORT = process.env.PORT || 3000;  // 環境変数PORTが来るのでそれを優先
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`✅ Server running on http://0.0.0.0:${PORT}`);
+});
